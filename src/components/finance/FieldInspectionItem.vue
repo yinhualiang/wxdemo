@@ -2,195 +2,131 @@
 	<div style="overflow: auto;height: 100%;background: #eee;text-align: left;">
 
 		<div class="my-cells" style="margin-top: 0px;">
-			<div class="weui-cell weui-cell_select myCell" >
-				<div class="weui-cell__hd"><span>项目名称</span><span style="color:red">*</span></div>
+
+      <div class="weui-cell weui-cell_select myCell" >
+        <div class="weui-cell__hd"><span>项目名称</span><span style="color:red">*</span></div>
+        <div class="weui-cell__bd">
+          <div class="weui-cell__bd myCell-bd" style="padding-top: 5px;padding-right: 10px;" @click="cations()" >
+            <span>{{cation.qiyige.payeename}}</span>
+          </div>
+        </div>
+      </div>
+			<div class="weui-cell myCell">
+				<div class="weui-cell__hd"><span>施工单位</span></div>
 				<div class="weui-cell__bd">
-					<div class="weui-cell__bd myCell-bd" style="padding-top: 5px;padding-right: 10px;" @click="cations()" >
-						<span>{{cation.qiyige.payeename}}</span>
-					</div>
+          <div class="weui-cell__bd myCell-bd" style="padding-top: 5px;padding-right: 10px;" @click="chooseSGDW()" >
+            <span>{{sgdw.qiyige.sgdw}}</span>
+          </div>
+				<!--	<input class="weui-input" :readonly="isReadOnly"  style="text-align: right;" v-model="mainData.sgdw" type="text">-->
 				</div>
 			</div>
-			<div class="weui-cell weui-cell_select myCell" >
-				<div class="weui-cell__hd"><span>施工单位</span><span style="color:red">*</span></div>
+			<div class="weui-cell myCell">
+				<div class="weui-cell__hd"><span>检查人</span></div>
 				<div class="weui-cell__bd">
-					<div class="weui-cell__bd myCell-bd" style="padding-top: 5px;padding-right: 10px;" @click="applications()" >
-					<span>{{application.qiyige.payeename}}</span>
-				</div>
+          <span>{{mainData.jcr}}</span>
+			<!--		<input class="weui-input" :readonly="isReadOnly"  style="text-align: right;" v-model="userName" type="text">-->
 				</div>
 			</div>
-			<div class="weui-cell weui-cell_select myCell" >
-				<div class="weui-cell__hd"><span>施工单位</span><span style="color:red">*</span></div>
-				<div class="weui-cell__bd">
-					<div class="weui-cell__bd myCell-bd" style="padding-top: 5px;padding-right: 10px;" >
-					<span>{{}}</span>
-				</div>
-				</div>
-			</div>
-			
+
+      <div class="weui-cell myCell">
+        <div class="weui-cell__hd"><span>检查时间</span></div>
+        <div class="weui-cell__bd">
+          <!--<span>{{userName}}</span>-->
+          <datetime title="" class="be-check no-line"  :readonly="isReadOnly" v-model="mainData.jcrq" style="padding:0px;padding-right:0px;height:100%;line-height:44px;" default-selected-value="date" format="YYYY-MM-DD" placeholder="请选择日期"></datetime>
+          <!--		<input class="weui-input" :readonly="isReadOnly"  style="text-align: right;" v-model="userName" type="text">-->
+        </div>
+      </div>
 		</div>
-		<div class="my-cells" style="display:none;">
-			
-			<div class="weui-cell myCell">
-				<div class="weui-cell__hd"><span>地砖铺设完成</span></div>
-				<div class="weui-cell__bd">
-					<input class="weui-input" :readonly="isReadOnly"  style="float:left;width:30%;border-bottom:1px solid #000;text-align:center;" v-model="mainData.sn" type="text"><span style='float:left;'>%</span>
-				</div>
-			</div>
-			<div class="weui-cell myCell">
-				<div class="weui-cell__hd"><span>轻钢龙骨隔墙完成</span></div>
-				<div class="weui-cell__bd">
-					<input class="weui-input" :readonly="isReadOnly"  style="float:left;width:30%;border-bottom:1px solid #000;text-align:center;" v-model="mainData.sn" type="text"><span style='float:left;'>%</span>
-				</div>
-			</div>
-			<div class="weui-cell myCell">
-				<div class="weui-cell__hd"><span>轻钢龙骨隔墙完成</span></div>
-				<div class="weui-cell__bd">
-					<input class="weui-input" :readonly="isReadOnly"  style="float:left;width:30%;border-bottom:1px solid #000;text-align:center;" v-model="mainData.sn" type="text"><span style='float:left;'>%</span>
-				</div>
-			</div>
-			<div class="weui-cell myCell">
-				<div class="weui-cell__hd"><span>轻钢龙骨隔墙墙面封板完成</span></div>
-				<div class="weui-cell__bd">
-					<input class="weui-input" :readonly="isReadOnly"  style="float:left;width:30%;border-bottom:1px solid #000;text-align:center;" v-model="mainData.sn" type="text"><span style='float:left;'>%</span>
-				</div>
-			</div>
-			<div class="weui-cell myCell">
-				<div class="weui-cell__hd"><span>天花吊顶主副龙骨铺设完成</span></div>
-				<div class="weui-cell__bd">
-					<input class="weui-input" :readonly="isReadOnly"  style="float:left;width:30%;border-bottom:1px solid #000;text-align:center;" v-model="mainData.sn" type="text"><span style='float:left;'>%</span>
-				</div>
-			</div>
-			<div class="weui-cell myCell">
-				<div class="weui-cell__hd"><span>天花封板施工完成</span></div>
-				<div class="weui-cell__bd">
-					<input class="weui-input" :readonly="isReadOnly"  style="float:left;width:30%;border-bottom:1px solid #000;text-align:center;" v-model="mainData.sn" type="text"><span style='float:left;'>%</span>
-				</div>
-			</div>
-			<div class="weui-cell myCell">
-				<div class="weui-cell__hd"><span>强电系统（含应急系统、防盗系统）布线施工完成 </span></div>
-				<div class="weui-cell__bd">
-					<input class="weui-input" :readonly="isReadOnly"  style="float:left;width:30%;border-bottom:1px solid #000;text-align:center;" v-model="mainData.sn" type="text"><span style='float:left;'>%</span>
-				</div>
-			</div>
-			<div class="weui-cell myCell">
-				<div class="weui-cell__hd"><span>系统（含网络、监控、音响）布线施工完成</span></div>
-				<div class="weui-cell__bd">
-					<input class="weui-input" :readonly="isReadOnly"  style="float:left;width:30%;border-bottom:1px solid #000;text-align:center;" v-model="mainData.sn" type="text"><span style='float:left;'>%</span>
-				</div>
-			</div>
-			<div class="weui-cell myCell">
-				<div class="weui-cell__hd"><span>空调系统（含风机盘管主机、风管、电源及控制电路）施工完成 </span></div>
-				<div class="weui-cell__bd">
-					<input class="weui-input" :readonly="isReadOnly"  style="float:left;width:30%;border-bottom:1px solid #000;text-align:center;" v-model="mainData.sn" type="text"><span style='float:left;'>%</span>
-				</div>
-			</div>
-			<div class="weui-cell myCell">
-				<div class="weui-cell__hd"><span>消防系统（含喷淋、消防栓改造；烟感系统改造）改造施工完成 </span></div>
-				<div class="weui-cell__bd">
-					<input class="weui-input" :readonly="isReadOnly"  style="float:left;width:30%;border-bottom:1px solid #000;text-align:center;" v-model="mainData.sn" type="text"><span style='float:left;'>%</span>
-				</div>
-			</div>
-		</div>
-		<div class="my-cells">
-			<div class="pop" style="text-align:left;">
-				<span class="col-xs-6">检查问题</span>
-			</div>
-		
-				
-				<div v-for="xiala in xialas" >
-					<div class="weui-panel__bd" style="text-align:left;border-top: 1px solid #eee;" @click="show(xiala)" v-if="(xiala.show == undefined || !xiala.show)">
-						<div class="weui-media-box weui-media-box_appmsg" style="padding: 5px;">
-							{{xiala.xm}}
-						</div>
-					</div>
-					<div v-show='xiala.show'>
-						<div class="details " style="padding:5px 10px;background:#eee">
-						
-							<div @click.stop="hide(child)"  class="details-title">
-								<div style="padding-top: 8px;">
-								
-									<!-- <p v-if="!isReadOnly" style="color:#f00;float:right" @click.stop="remove(xiala)">-删除</p> -->
-								</div>
-							</div>
-						</div>
-						
-						<div class="weui-cell myCell">
-							<div class="weui-cell__hd"><span>验收内容：</span></div>
-							<div class="weui-cell__bd">
-								{{xiala.ysnr}}
-							</div>
-						</div>
-						<div class="weui-cell  weui-cell_select  myCell">
-							<div class="weui-cell__hd"><span>是否合格</span></div>
-							<div class="weui-cell__bd">
-								<select class="weui-select" :readonly="isReadOnly" v-model="xiala.bhg"    name="select1">
-									<option  value="">合格</option>
-									<option  value="1">不合格</option>
-								</select>
-							</div>
-						</div>
-						<div class="weui-cell myCell">
-							<div class="weui-cell__hd"><span>说明：</span></div>
-							<div class="weui-cell__bd">
-								{{xiala.sm}}
-							</div>
-						</div>
-						<div class="weui-cell myCell" >
-							<div class="weui-cell__hd"><span>问题描述：</span><span style="color:red">*</span></div>
-							<div class="weui-cell__bd">
-								<input class="weui-input" :readonly="isReadOnly"  style="text-align: right;width:90%;" v-model="xiala.sm" type="text">
-							</div>
-						</div>
-						<div class="my-cells" style="padding-left: 6px;">
-							<Attachment :model="attachmentModel"></Attachment>	
-						</div>
-					</div>
-					
-					
-					
-				</div>
-				
-			
-			
-		</div>
-		<div class="my-cells" style="padding-left: 6px;">
-			<Attachment :model="attachmentModel1"></Attachment>	
-		</div>
+
+    <!--<div class="my-cells">
+    <div class="weui-cell  weui-cell_select  myCell">
+      <div class="weui-cell__hd"><span>检查项</span></div>
+      <div class="weui-cell__bd">
+        <select class="weui-select" :readonly="isReadOnly" v-model="checkItem.itemName"  @click="chioseCheckquestion()"  name="select1">
+          <option v-for="shopitem in checkItems" :value="shopitem">{{shopitem}}</option>
+        </select>
+      </div>
+    </div>
+    </div>-->
+
+    <div v-for="check in checkData" >
+      <div class="weui-panel__bd" style="text-align: left; border-top-width: 1px; border-top-style: solid; border-top-color: rgb(238, 238, 238);background-color: white" @click="showCheckDetailList(check)">
+        <div class="weui-media-box weui-media-box_appmsg" style="padding: 5px;">
+          {{check.mc}} - {{check.bzmc}}
+        </div>
+      </div>
+      <div v-show='check.show' style="background-color: white">
+        <div class="details " style="padding:0px 3px;background:#eee">
+          <div class="details-title">
+            <div style="padding-top: 8px;">
+              <!-- <p v-if="!isReadOnly" style="color:#f00;float:right" @click.stop="remove(xiala)">-删除</p>-->
+            </div>
+          </div>
+        </div>
+        <div class="weui-cell">
+          <div class="weui-cell__bd" ><span>检查关键点：</span></div>
+          <div class="weui-cell__bd" >
+            {{check.bzms}}
+          </div>
+        </div>
+        <div   class="weui-cell myCell" >
+          <div class="weui-cell__hd" ><span>是否合格：</span></div>
+          <div class="weui-cell__bd" >
+            <check-icon :value.sync="check.qualified"> </check-icon>
+          </div>
+        </div>
+        <div class="weui-cell myCell" style="border-bottom: 1px solid darkgray">
+          <div class="weui-cell__hd" ><span>说明：</span><span style="color:red">*</span></div>
+          <div class="weui-cell__bd" >
+            <input class="weui-input" :readonly="isReadOnly"  style="text-align: right;width:90%;" v-model="check.desc" type="text">
+          </div>
+        </div>
+        <div class="my-cells">
+          <Attachment :model="attachmentModel"></Attachment>
+        </div>
+      </div>
+    </div>
+
 		<!-- <VoiceRecognition :model="voiceRecognition"></VoiceRecognition> -->
-		
+		<!--<div class="my-cells" style="padding-left: 6px;">
+			<Attachment :model="attachmentModel"></Attachment>
+		</div>-->
 		<mt-popup v-model="selectProjModel.selectProjVisible" position="right" popup-transition="popup-fade" style="width:100%;height:100%">
 			<SelectProj :mess="selectProjModel" @selectProjCallback="selectProjCallback($event)"></SelectProj>
 		</mt-popup>
-		<!-- <mt-popup v-model="addressObj.addressVisible" position="right" popup-transition="popup-fade" style="width:100%;height:100%">
+		 <mt-popup v-model="addressObj.addressVisible" position="right" popup-transition="popup-fade" style="width:100%;height:100%">
 			<ChooseAddress :address="addressObj" ref="addressfile" @chooseAddress="chooseAddress($event)"></ChooseAddress>
-		</mt-popup> -->
+		</mt-popup>
 		<mt-popup v-model="userModel.visible" position="right" popup-transition="popup-fade" style="width:100%;height:100%">
 			<SelectUser :userModel="userModel" ref="profile" ></SelectUser>
 		</mt-popup>
 		<mt-popup v-model="departModel.visible" position="right" popup-transition="popup-fade" style="width:100%;height:100%">
 			<selectQuarters :orgModel="departModel" ref="departSel"></selectQuarters>
 		</mt-popup>
-		<mt-popup position="right" v-model="cation.visible" popup-transition="popup-fade" style="width:100%;height:100%">
-			<ConstructionUser  :caModel="cation"  @xiala='xiala'></ConstructionUser>
-		</mt-popup>
-		<mt-popup position="right" v-model="application.visible" popup-transition="popup-fade" style="width:100%;height:100%">
-			<Applicationforconstruction  :appModel="application" ></Applicationforconstruction>
-		</mt-popup>
+
+    <mt-popup position="right" v-model="cation.visible" popup-transition="popup-fade" style="width:100%;height:100%">
+      <ConstructionUser  :caModel="cation"  ></ConstructionUser>
+    </mt-popup>
+
+    <mt-popup position="right" v-model="sgdw.visible" popup-transition="popup-fade" style="width:100%;height:100%">
+      <applicationforconstruction :appModel="sgdw" :userId="userModel.userUid"></applicationforconstruction>
+    </mt-popup>
+
 		<div class="footer">
 			<p style="padding:0 5px;">
 				  <button  @click="saveData(1)" class="weui-btn weui-btn_mini weui-btn_default cancelBtn">取消</button>
 				  <button  @click="saveData()" class="weui-btn weui-btn_mini weui-btn_primary submitBtn">确定</button>
 			</p>
 		</div>
-	
+
 	</div>
 </template>
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
-import { Datetime } from 'vux';
+import { Datetime, CheckIcon} from 'vux';
 import Attachment from '../common/Attachment.vue'
-// import ChooseAddress from '../common/ChooseAddress.vue'
+ import ChooseAddress from '../common/ChooseAddress.vue'
 import SelectUser from '../common/SelectUser.vue'
 import selectQuarters from '../common/selectQuarters.vue'
 import VoiceRecognition from '../common/VoiceRecognition.vue'
@@ -206,90 +142,31 @@ export default {
 				addressVisible:false,
 			},
 			symbol:'sn,CCSQ',
-			formId:"DForm_XM008_ysgl_ybysjc",
-			sqlTableName:"G006_ysgl_ybysjc",
+			formId:"DForm_XM008_sggl_xcjc",
+			sqlTableName:"G006_sggl_xcjc",
 			mainData:{
 				SN_:'',
-				SUBJECT_:'',
-				ENABLE_:1
+				SUBJECT_:'现场检查',
+				ENABLE_:1,
+        xmmc: '',
+        jcr: '',
+        jcrq: '',
+        sgdw: '',
+        xmbh: '',
+        xmid: ''
 			},
 			mainData1:{
-				task_start_date:'',
-				task_end_date:'',
-				task_uid:'',
-				task_name:'',
-				TASK_rwqz:''
+        gjjcd: '',
+        sfhg: false,
+        sm: '',
+        lb: '',
+        jcx: ''
 			},
-			mainData2:{
-				task_start_date:'',
-				task_end_date:'',
-				task_uid:'',
-				task_name:'',
-				TASK_rwqz:''
-			},
-			xialas:[
-				{
-					TASK_NAME:'',
-					TASK_FINISH_DATE: '',	//....
-					TASK_START_DATE: '',	//....
-					TASK_rwqz: '',	//....
-					TASK_OUTLINE_NUM: '',
-					TASK_PCT_COMP:'',
-					TASK_UID:'',	//....
-					IS_SHOW:false, //判断是否已经显示
-
-				},
-			],
-			// xialaCopy:{
-					
-			// 		TASK_FINISH_DATE: '',	//....
-			// 		TASK_START_DATE: '',	//....
-			// 		TASK_rwqz: '',	//....
-			// 		TASK_OUTLINE_NUM: '',
-			// 		TASK_UID:''	//....
-
-			// },
 			userModel:{
 				visible:false,
 				sqr:'',
-				userUid:'',
+				userUid:'1',
 				users:[]
-			},
-			cation:{
-				visible:false,
-				qiyige:{
-					name:'',
-					
-				},
-				xinxi:{
-				// 	xmdd:'',
-				// 	xxdz:'',
-				// 	xgdw:'',
-				// 	sjs:'',
-				// 	htmj:'',
-				// 	jcrq:'',
-					xmid:'',
-					xmbh:'',
-					id:''
-				// 	jgrq:'',
-				// 	kgrq:''
-				},
-				id:'',
-				item:{},
-				list:{}
-				
-			},
-			application:{
-				visible:false,
-				qiyige:{
-					xmmc:'',
-					jflxr:'',
-					htje:'',
-					jsrq:'',
-					userid:''
-				},
-				
-				
 			},
 			children:[],
 			departModel: {
@@ -298,13 +175,6 @@ export default {
 				visible: false
 			},
 			attachmentModel: {
-				isReadOnly: false,
-				xtype:'file',
-				title: '照片',
-				fileList: [],
-				deleteFilesList: []
-			},
-			attachmentModel1: {
 				isReadOnly: false,
 				xtype:'file',
 				title: '附件',
@@ -322,19 +192,47 @@ export default {
 				placeholder: '请输入详情...',
 				content: ''
 			},
+      cation:{
+        visible:false,
+        qiyige:{
+          name:'',
+
+        },
+        xinxi:{
+          xmdd:'',
+          xxdz:'',
+          xgdw:'',
+          sjs:'',
+          htmj:'',
+          jcrq:'',
+          xmid:'',
+          xmbh:'',
+          jgrq:'',
+          kgrq:''
+        },
+        id:'',
+        item:{},
+        list:{}
+
+      },
+      sgdw:{
+          visible: false,
+          qiyige: {
+            sgdw: ''
+          }
+      },
+      checkData: [],
+      checkItemList: []
 		}
 	},
 	created() {
 		// this.util.initWxJsSdk(this);
-		this.application.qiyige.userid =this.userId;
-		this.feileiData();
-		this.yanshou();
-
+    this.feileiData();
+    this.selectCheckItems();
 	},
 	activated() {
-		
 		this.util.init(this);
-		this.mainData={czy:this.userName,SUBJECT_:'',ENABLE_:1};
+		this.mainData={czy:this.sqr,SUBJECT_:'',ENABLE_:1};
 		this.userModel.sqr = '';
 		this.userModel.userUid = '';
 		this.departModel.departName= this.sessionUtil.getDepartName(this);
@@ -346,76 +244,32 @@ export default {
 		this.attachmentModel.isReadOnly = this.isReadOnly;
 		this.id = id;
 		this.loadData();
+    this.mainData.jcrq=new Date().format("yyyy-MM-dd");
 	},
 	components: {
 		// 名字
-		Attachment,SelectUser,Datetime,selectQuarters,VoiceRecognition,SelectProj,ConstructionUser,Applicationforconstruction
+    ChooseAddress,Attachment,SelectUser,Datetime,selectQuarters,VoiceRecognition,SelectProj,ConstructionUser,Applicationforconstruction,CheckIcon
 	},
 	computed: {
 		...mapState({
-			userName: state => state.userName,
-			userId: state => state.userId
+			userName: state => state.userName
 		})
 
 	},
 	methods: {
+
+    feileiData(){
+      var param ={};
+        this.util.post('/admin/appAgentAction!runAgent.action?agentId=Agent_XM008_xmb&type=getInfo&sqlWhere=&node=root', param, (res)=> {
+        this.util.unmask();
+        this.cation.list=res;
+      });
+    },
 		remove(child) {
-		child.IS_SHOW=false;
-		
-		this.xuanran();
-			
-			
-			
-		}, 
-		// hide(xiala) {
-		// 	xiala.show = false;
-		// },
-		show(xiala) {
-			
-			for (var i in this.xialas) {
-				this.xialas[i].show = false;
-			}
-			xiala.show = true;
-			this.xuanran();
-		},
-		applications(data){
-			this.application.visible=true;
-			// this.$refs.classcation.postMsg({selectCation:{}});
-		
-			
-		},
-		// popst(){
-			
-		// 	let vm = this;
-		// 	this.xialas.map((xiala,index,lists)=>{
-		// 		if(vm.mainData.rwmc == xiala.TASK_UID){
-		// 			// vm.xialaCopy = {
-		// 			// 	TASK_FINISH_DATE: xiala.TASK_FINISH_DATE,	//....
-		// 			// 	TASK_START_DATE: xiala.TASK_START_DATE,	//....
-		// 			// 	TASK_rwqz: xiala.TASK_rwqz,	//....
-		// 			// 	TASK_OUTLINE_NUM: xiala.TASK_OUTLINE_NUM,
-		// 			// 	TASK_UID:xiala.TASK_UID	//....
-
-		// 			// }
-		// 			//xiala.IS_SHOW = true;
-		// 			vm.$set(xiala, 'IS_SHOW', true);
-		// 		}
-		// 	})
-		// 	// 点击过后的xialas
-		// 	this.xuanran();
-			
-		// 	// if(this.mainData.rwmc==){
-		// 	// this.add();
-		// 	// }
-			
-			
-
-		// },
-		xuanran(){
-			let vm = this;
-			let xialasTemp = vm.xialas;
-			vm.xialas = [];
-			vm.xialas = xialasTemp;
+			this.children = this.children.filter((item) => {
+				return item != child;
+			});
+			this.totalamount();
 		},
 		add() {
 			for (var i in this.children) {
@@ -431,68 +285,18 @@ export default {
 				cbmc: "1321513215",
 				show: true
 			});
-		}, 
-		xiala(){
-			
-			  var param ={operateType:'task',UserName:'UR管理员',xmid:this.cation.xinxi.xmid};
-			  let vm = this;
-			 
-				this.util.post('/admin/appAgentAction!runAgent.action?agentId=Agent_WeChat_Mobile&type=getInfo&sqlWhere=&node=root', param, (res)=> {	
-					this.util.unmask();
-				
-					
-					
-        		});
-		},
-		yanshou(){
-			 var param ={operateType:'ysnr'};
-			  
-			 
-				this.util.post('/admin/appAgentAction!runAgent.action?agentId=Agent_WeChat_Mobile&type=getInfo&sqlWhere=&node=root', param, (res)=> {	
-					this.util.unmask();
-					console.log(555)
-					console.log(res)
-					this.xialas=res.data
-					
-						// vm.xialas=res.data
-						// vm.xialas.map((xiala,index,lists)=>{
-						// 	xiala.IS_SHOW = false;
-						// })
-        		});
-		},
-		feileiData(){
-                 var param ={};
-				
-				this.util.post('/admin/appAgentAction!runAgent.action?agentId=Agent_XM008_xmb&type=getInfo&sqlWhere=&node=root', param, (res)=> {	
-                    this.util.unmask();
-					
-                    // this.list=res.data;
-				
-					
-					// debugger
-                    // var o=JSON.parse(res.data)
-					console.log(res)
-                    // this.cation.list=[o]
-					this.cation.list=res;
-                    // this.addCheck(this.list)
-                    
-        		});
-			},
-		cations(){
-			this.cation.visible=true;
 		},
 		...mapActions([
 			'selectProj'
 		]),
-		
-		// hide(child) {
-		// 	child.show = false;
-		// }, show(child) {
-		// 	for (var i in this.children) {
-		// 		this.children[i].show = false;
-		// 	}
-		// 	child.show = true;
-		// },
+		hide(child) {
+			child.show = false;
+		}, show(child) {
+			for (var i in this.children) {
+				this.children[i].show = false;
+			}
+			child.show = true;
+		},
 		selectProjCallback(){
 			this.mainData.SUBJECT_=this.selectProjModel.xmmc+"_"+new Date().format("yyyyMMdd")+"采购订单";
 		},
@@ -502,12 +306,12 @@ export default {
 		},
 		chooseAddress(data){
 			this.mainData.dd=data.address;
-			
+
 		},
 		selectAddress(){
 			this.locationAgain();
 			this.addressObj.addressVisible=true;
-			
+
 		},
 		selectDepart() {
 			this.$refs.departSel.postMsg({ singer: true, radioCheckedArr: [] })
@@ -528,7 +332,7 @@ export default {
 					var accuracy = res.accuracy; // 位置精度
 					var lnglat = new AMap.LngLat(longitude,latitude);
 					AMap.convertFrom(lnglat,"gps",function(status,result){
-							
+
 							var latlng = result.locations[0];
 							//保存坐标
 							var curLat = latlng.getLat();//当前高德维度
@@ -538,8 +342,8 @@ export default {
 							_this.$refs.addressfile.locationAgain(_this.location)
 						}
 					);
-					
-					
+
+
 				}
 
 			});
@@ -548,47 +352,70 @@ export default {
 			var _this = this;
 			if (!this.isNewFlag) {
 				this.util.mask("正在加载...");
-				this.util.initData({id:this.id ,sqlTableName:this.sqlTableName},function(data){
-					_this.util.unmask();
-					
-					_this.userModel.sqr = data.sqr;
-					_this.cation.qiyige.payeename=data.xmmc;
-					_this.application.qiyige.payeename=data.sgdw
-					_this.userModel.userUid = data.userid;
-					_this.departModel.departName = _this.mainData.depart;
-					_this.mainData = data;
-					
-				
-				});
-				
-					var param ={operateType:'ycjcInfo',pid:this.$route.query.id};
-				
-					this.util.post('/admin/appAgentAction!runAgent.action?agentId=Agent_WeChat_MobileDetailsInfo&type=getInfo&sqlWhere=&node=root', param, (res)=> {	
-					this.util.unmask();
-					console.log(1231231)
-					console.log(res)
-					this.xialas=res.data;
-					// for(let i=0;i<this.xialas.length;i++){
-					// 	this.xialas[i].TASK_START_DATE=res.data[i].task_start_date;
-					// 	this.xialas[i].TASK_rwqz=res.data[i].task_rwqz;
-					// 	this.xialas[i].TASK_NAME=res.data[i].task_name;
-					// 	this.xialas[i].TASK_PCT_COMP=res.data[i].task_pct_comp;
-					// }
-					console.log(res)
-					
-					
-        			});
-			}
-			
-			
+        this.util.initData({id:this.id ,sqlTableName:this.sqlTableName},function(data){
+          _this.util.unmask();
+          _this.userModel.sqr = data.sqr;
+          _this.userModel.userUid = data.userid;
+          _this.departModel.departName = _this.mainData.depart;
+          _this.mainData = data;
+          _this.sgdw.qiyige.sgdw =  _this.mainData.sgdw
+          _this.cation.qiyige.payeename=data.xmmc;
+          });
+        /*查询检查明细数据*/
+        var operateType;
+        var pid;
+        var param ={operateType: "xcjcInfo",pid: _this.id};
+        this.util.post('/admin/appAgentAction!runAgent.action?agentId=Agent_WeChat_MobileDetailsInfo&type=getInfo&sqlWhere=&node=root', param, (res)=> {
+          this.util.unmask();
+          this.checkData = []
+          console.log("res.data: " ,res.data)
+          var data = res.data
+          var flag = false
+          for (var i in data) {
+              if (this.checkData != null) {
+                  for (var j in  this.checkData) {
+                    if (this.checkData.bzmc === data.jcx) {
+                        flag = true
+                        break
+                    }
+                  }
+              }
+              var d  = {}
+              d.mc = data[i].lb
+              d.bzmc = data[i].jcx
+              d.bzms = data[i].gjjcd
+              if (data[i].sfhg === "true") {
+                d.qualified = true
+              } else {
+                d.qualified = false
+              }
+              d.show = false
+              d.desc = data[i].sm
+              this.checkData.push(d)
+          }
+        });
+			} else {
+        _this.mainData.jcr = _this.userName
+        _this.cation.qiyige.payeename = ''
+        _this.mainData.xmmc = ''
+        _this.mainData.sgdw = ''
+        _this.sgdw.qiyige.sgdw = ''
+      }
 		},
 		checkValid() {
-			console.log(this.application)
-			if(!this.validUtil.isNotEmpty(this.cation.qiyige.payeename)){
-				this.util.failueToast('请选择项目名称');
-				return false;
-			}
-			
+			// if(!this.validUtil.isNotEmpty(this.userModel.userUid)){
+			// 	this.util.failueToast('请选择出差人');
+			// 	return false;
+			// }
+			// if(!this.validUtil.isNotEmpty(this.departModel.departName)){
+			// 	this.util.failueToast('请输入部门');
+			// 	return false;
+			// }
+
+			// if(!this.validUtil.isNotEmpty(this.mainData.ccts)){
+			// 	this.util.failueToast('请输入出差天数');
+			// 	return false;
+			// }
 			return true;
 		},
 		saveData(flag){
@@ -599,18 +426,13 @@ export default {
 			if(!this.checkValid()){
 				return;
 			}
-
-		
-			
-
-			this.mainData.jbr=this.userName;
-			this.mainData.xmmc=this.cation.qiyige.payeename;
-			this.mainData.xmbh=this.cation.xinxi.xmbh;
-			this.mainData.xmid=this.cation.xinxi.xmid;
-			this.mainData.name = this.userModel.sqr;
-			this.mainData.sgdw=this.application.qiyige.payeename
-			
-			this.mainData.depart = this.departModel.departName;
+   /*   this.mainData.xmid = this.cation.xinxi.xmid
+      this.mainData.xmmc = this.cation.qiyige.payeename
+      this.mainData.jcr = this.userName
+      this.mainData.sgdw = this.sgdw.qiyige.xmmc
+      this.mainData.xmbh = this.cation.xinxi.xmbh*/
+      this.mainData.sgdw = this.sgdw.qiyige.sgdw
+      this.mainData.xmmc = this.cation.qiyige.payeename
 			var filesData = new Array();
 			for (var i=0;i< this.attachmentModel.fileList.length;i++) {
 				var file = this.attachmentModel.fileList[i];
@@ -618,51 +440,40 @@ export default {
 					filesData.push(file);
 				}
 			}
-			
-			// this.mainData1.task_start_date=this.xialas[0].TASK_START_DATE;
-			// this.mainData1.task_end_date=this.xialas[0].TASK_FINISH_DATE;
-			// this.mainData1.task_pct_comp=this.xialas[0].TASK_PCT_COMP;
-			// this.mainData1.task_outline_num=this.xialas[0].TASK_OUTLINE_NUM;
-			// this.mainData1.task_uid=this.xialas[0].TASK_UID;
-			// this.mainData1.task_name=this.xialas[0].task_name;
 
-			// this.mainData2.task_start_date=this.xialas[1].TASK_START_DATE;
-			// this.mainData2.task_end_date=this.xialas[1].TASK_FINISH_DATE;
-			// this.mainData2.task_pct_comp=this.xialas[1].TASK_PCT_COMP;
-			// this.mainData2.task_outline_num=this.xialas[1].TASK_OUTLINE_NUM;
-			// this.mainData2.task_uid=this.xialas[1].TASK_UID;
-			// this.mainData2.task_name=this.xialas[1].task_name;
-			
-			var subForm = { subFormId: 'subForm1', subFormForeignKey: 'pid', subFormTable: 'G006_ysgl_ybysjcdet' ,fsrq:'2015-05-18'};
-			var detData = [];
-			
-			
-			for( var i=0;i<this.xialas.length;i++){
-				
-					detData.push(this.xialas[i]);
-				
-			}
-			
+			for (var i in this.checkData) {
+			    if (this.checkData[i].qualified ||this.checkData[i].desc) {
+			        var mainData1 = {}
+			        mainData1.gjjcd = this.checkData[i].bzms
+              mainData1.xmid  =  this.cation.xinxi.xmid
+              mainData1.sfhg = this.checkData[i].qualified
+              mainData1.sm = this.checkData[i].desc
+              mainData1.lb = this.checkData[i].mc
+              mainData1.jcx =  this.checkData[i].bzmc
+			        this.checkItemList.push(mainData1);
+          }
+      }
+			var subForm = { subFormId: 'subForm1', subFormForeignKey: 'pid', subFormTable: 'G006_sggl_xcjcdet' ,fsrq:'2015-05-18'};
+			var detData = this.checkItemList;
 			subForm.data = JSON.stringify(detData);
 			var subFormData = new Array();
 			subFormData.push(subForm);
 
 			var _this=this;
 			this.util.mask('正在保存...');
-			var params = { sqlTableName: "G006_ysgl_ybysjc",subFormData: JSON.stringify(subFormData), mainFormData: JSON.stringify(this.mainData), filesData: JSON.stringify(filesData), deleteFilesData: _this.attachmentModel.deleteFilesList.join(",") };
+			var params = { sqlTableName: "G006_sggl_xcjc",subFormData: JSON.stringify(subFormData), mainFormData: JSON.stringify(this.mainData), filesData: JSON.stringify(filesData), deleteFilesData: _this.attachmentModel.deleteFilesList.join(",") };
 			if (this.validUtil.isNotEmpty(this.id)) {
 				params['id'] = this.id;
 				params['businessKey'] = this.id;
 			}
 			params['symbol'] = this.symbol;
 			params['formId'] = this.formId;
-			params['Subject'] = "隐蔽检查";
+			params['subject'] = "现场检查";
 			this.util.post("/admin/appDefaultFormAction!saveData.action",params,function(result){
 					if(result.success){
 						_this.util.unmask();
 						_this.util.setTemp(_this,"loadOutWorkList"+Math.random().toString(36).substr(2));
 						history.back();
-						
 					}else{
 						if(status!=1){
 							_this.util.unmask();
@@ -670,11 +481,43 @@ export default {
 						_this.util.alert(result.msg);
 					}
 				});
-			console.log(4545)
-				console.log(params)
-			return params;
-
-		}
+				return params;
+		},
+    cations(){
+      this.cation.visible=true;
+      // this.$r(efs.classcation.postMsg({selectCation:{}});
+    },
+    chooseSGDW() {
+        this.sgdw.visible = true
+    },
+    //查询检查项
+    selectCheckItems(){
+      var param ={operateType:'xcjcInfo'};
+      this.util.post('/admin/appAgentAction!runAgent.action?agentId=Agent_WeChat_Mobile&type=getInfo&sqlWhere=&node=root', param, (res)=> {
+        this.util.unmask();
+        console.log("res:",res)
+        for (var i in   res.data) {
+          var data = {}
+          data.bzmc = res.data[i].bzmc
+          data.mc  = res.data[i].mc
+          data.bzms = res.data[i].bzms
+          data.show = false
+          data.qualified = false
+          data.desc = ''
+          this.checkData.push(data)
+        }
+        console.log("res.data : ", this.checkData)
+      });
+    },
+    showCheckDetailList (check) {
+        for (var i in this.checkData) {
+            if (this.checkData[i].bzmc !== check.bzmc) {
+              this.checkData[i].show = false
+            } else if (this.checkData[i].bzmc === check.bzmc) {
+              this.checkData[i].show = true
+            }
+        }
+    }
 	}
 }
 </script>
@@ -690,7 +533,7 @@ export default {
 	height: 48px;
 	padding-left: 0px;
 	line-height: 48px;
-	border-top: 1px solid #eee; // 
+	border-top: 1px solid #eee; //
 }
 
 .pop {
@@ -753,16 +596,5 @@ export default {
 	direction: rtl;
 	padding: 0 8px;
     box-sizing: border-box;
-}
-.weui-media-box__bd{
-	background-color: #fcfcfc;
-	height:30px;
-}
-</style>
-
-
-<style>
-.weui-cells_form .weui-cell{
-	padding: 0
 }
 </style>
