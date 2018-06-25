@@ -1,0 +1,46 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Document</title>  
+    <script src="vue.js"></script>  
+</head>  
+<body>  
+<div id="parent">   
+    <input type="text" name="" id="" v-model="msg" />  
+    <input type="button" id="" value="dianji" @click="clickDt" />  
+    <user-profile ref="profile"></user-profile>    
+</div>    
+    
+<script>    
+    Vue.component('user-profile', {    
+        template: '<span>{{ msg }}</span>',    
+        data: function () {    
+            return {  
+                msg: 123  
+            };  
+        },    
+        methods: {    
+            greet: function (msg) {    
+                console.log(msg);    
+            }    
+        }    
+    
+    })    
+//      var parent = new Vue({el: '#parent'});    
+//      var child = parent.$refs.profile;    
+//      child.greet();    
+    new Vue({  
+        el:"#parent",  
+        data:{  
+            msg:""  
+        },  
+        methods: {  
+                clickDt(){  
+                this.$refs.profile.greet(this.msg);  
+            }  
+        }  
+    })  
+</script>    
+</body>  
+</html>  

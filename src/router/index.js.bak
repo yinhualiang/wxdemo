@@ -1,0 +1,563 @@
+import Vue from 'vue'
+import Router from 'vue-router'
+import store from '@/store/index.js'
+
+
+Vue.use(Router)
+
+const router = new Router({
+    // 去掉#/的方法
+    //mode: 'history',
+    //linkActiveClass: 'header-active',
+    //hashbang: false,
+    //base: '/jpro/',
+    //history: true,
+    routes: [
+        {
+            path: '/',
+            name: 'index',
+            // component: require('@/components/home/Index.vue'),
+            component: resolve => require(['@/components/home/Index.vue'], resolve),
+            meta: {
+                title: '',
+            },
+            children: [
+                {
+                    path: 'index/',
+                    redirect: '/'
+                }
+            ]
+        },
+        {
+            path: '/app/index',
+            name: 'app/index',
+            meta: {
+                title: '首页'
+            },
+            component: resolve => require(['@/components/home/indexNav.vue'], resolve)
+        }
+        , {
+            path: '/projWorkLog',
+            name: 'proj/workLog/index',
+            meta: {
+                title: '施工日志',
+            },
+            component:  resolve =>require(['@/components/workLog/Index.vue'], resolve)
+        }, {
+            path: '/proj/workLog/info',
+            name: 'proj/workLog/info',
+            meta: {
+                title: '施工日志添加',
+            },
+            component:  resolve =>require(['@/components/workLog/WorkLog.vue'], resolve)
+        }, {
+            path: '/proj/workLog/query',
+            name: 'proj/workLog/query',
+            meta: {
+                title: '施工日志查询'
+            },
+            component:  resolve =>require(['@/components/workLog/Query.vue'], resolve)
+        } , {
+            path: '/record/index',
+            name: 'record/index',
+            meta: {
+                title: '随手拍'
+            },
+            component:  resolve =>require(['@/components/record/Index.vue'], resolve)
+        }
+        , {
+            path: '/record/info',
+            name: 'record/info',
+            meta: {
+                title: '随手拍详情'
+            },
+            component:  resolve =>require(['@/components/record/Record.vue'], resolve)
+        }, {
+            path: '/record/show',
+            name: 'record/show',
+            meta: {
+                title: '随手拍图片墙'
+            },
+            component:  resolve =>require(['@/components/record/Show.vue'], resolve)
+        }
+        ,{
+            path: '/workflow/model/index',
+            name: 'workflow/model/index',
+            meta: {
+                title: '流程配置'
+            },
+            component: resolve => require(['@/components/workflow/index.vue'], resolve)
+        },
+        {
+            path: '/workflow/model/design',
+            name: 'workflow/model/design',
+            meta: {
+                title: '流程设计'
+            },
+            component: resolve => require(['@/components/workflow/Design.vue'], resolve)
+        }, {
+            path: '/workflow/desktop',
+            name: 'workflow/desktop',
+            meta: {
+                title: '流程审批'
+            },
+            component: resolve => require(['@/components/workflow/Desktop.vue'], resolve)
+        },
+        {
+            path: '/workflow/applyIndex',
+            name: 'workflow/applyIndex',
+            meta: {
+                title: '流程申请'
+            },
+            component: resolve => require(['@/components/workflow/ApplyIndex.vue'], resolve)
+        }, {
+            path: '/workflow/apply',
+            name: 'workflow/apply',
+            meta: {
+                title: '我申请的'
+            },
+            // component: require('@/components/workflow/ApplyList.vue')
+            component: resolve => require(['@/components/workflow/ApplyList.vue'], resolve)
+        }, {
+            path: '/workflow/approval',
+            name: 'workflow/approval',
+            meta: {
+                title: '我的待办'
+            },
+            component: resolve => require(['@/components/workflow/ApprovalList.vue'], resolve)
+        }, {
+            path: '/workflow/copy',
+            name: 'workflow/copy',
+            meta: {
+                title: '抄送我的'
+            },
+            // component: require('@/components/workflow/CopyList.vue')
+            component: resolve => require(['@/components/workflow/CopyList.vue'], resolve)
+        },
+        {
+            path: '/processForm',
+            name: 'processForm',
+            meta: {
+                title: '流程处理'
+            },
+            component: resolve => require(['@/components/common/ProcessForm.vue'], resolve)
+        },
+        {
+            path: '/workflow/formDetailData',
+            name: 'workflow/formDetailData',
+            meta: {
+                title: '表单详细信息'
+            },
+            // component: require('@/components/workflow/FormDetailData.vue')
+            component: resolve => require(['@/components/workflow/FormDetailData.vue'], resolve)
+        },
+        {
+            path: '/workflow/processPng',
+            name: 'workflow/processPng',
+            meta: {
+                title: '查看流程图'
+            },
+            component: resolve => require(['@/components/workflow/ProcessPng.vue'], resolve)
+        },
+        {
+            path: '/qualityIndex',
+            name: 'qualityIndex',
+            meta: {
+              title: '质量检查'
+            },
+            component: resolve => require(['@/components/quality/QualityIndex.vue'], resolve)
+          },
+
+        {
+            path: '/checkBillList',
+            name: 'checkBillList',
+            meta: {
+              title: '质量检查'
+            },
+            component: resolve => require(['@/components/quality/CheckBillList.vue'], resolve)
+        },
+        {
+            path: '/addQualityInspect',
+            name: 'addQualityInspect',
+            meta: {
+              title: '新增质量检查'
+            },
+            component: resolve => require(['@/components/quality/AddQualityInspect.vue'], resolve)
+        },
+        {
+            path: '/addImproveBill',
+            name: 'addImproveBill',
+            meta: {
+              title: '新增质量整改单'
+            },
+            component: resolve => require(['@/components/quality/AddImproveBill.vue'], resolve)
+        },{
+            path: '/improveBillList',
+            name: 'improveBillList',
+            meta: {
+              title: '质量整改'
+            },
+            component: resolve => require(['@/components/quality/ImproveBillList.vue'], resolve)
+          },
+
+        {
+            path: '/checkBillShow',
+            name: 'checkBillShow',
+            meta: {
+              title: '质量检查详情'
+            },
+            component: resolve => require(['@/components/quality/CheckBillShow.vue'], resolve)
+        },
+          {
+            path: '/improveBillShow',
+            name: 'improveBillShow',
+            meta: {
+              title: '质量整改单'
+            },
+            component: resolve => require(['@/components/quality/ImproveBillShow.vue'], resolve)
+          },
+        {
+            path: '/addLeave',
+            name: 'addLeave',
+            meta: {
+                title: '新建请假',
+            },
+            component: resolve => require(['@/components/leave/AddLeave.vue'], resolve)
+        },
+        {
+            path: '/movebx',
+            name: 'movebx',
+            meta: {
+                title: '新建报销',
+            },
+            component: resolve => require(['@/components/movebx/Movebx.vue'], resolve)
+        },
+        {
+            path: '/sign',
+            name: 'sign',
+            meta: {
+                title: '考勤管理',
+            },
+            component: resolve => require(['@/components/sign/Sign.vue'], resolve)
+        },
+        {
+            path: '/checkOutWork',
+            name: 'checkOutWork',
+            meta: {
+              title: '外勤签到'
+            },
+            component: resolve => require(['@/components/sign/child/CheckOutWork.vue'], resolve)
+          },{
+            path: '/checkOutShow',
+            name: 'checkOutShow',
+            meta: {
+              title: '外勤详情'
+            },
+            component: resolve => require(['@/components/sign/child/CheckOutShow.vue'], resolve)
+          },
+          {
+            path: '/attRecord',
+            name: 'attRecord',
+            meta: {
+              title: '考勤签到列表'
+            },
+            component: resolve => require(['@/components/sign/child/AttRecord.vue'], resolve)
+          },{
+            path: '/checkWork',
+            name: 'checkWork',
+            meta: {
+              title: '考勤签到'
+            },
+            // component: require('@/components/sign/child/CheckWork.vue')
+            component: resolve => require(['@/components/sign/child/CheckWork.vue'], resolve)
+          },
+          {
+            path: '/checkSeting',
+            name: 'checkSeting',
+            meta: {
+              title: '考勤设置'
+            },
+            component: resolve => require(['@/components/sign/CheckSeting.vue'], resolve)
+          },
+          {
+            path: '/setCheckPoint',
+            name: 'setCheckPoint',
+            meta: {
+              title: '考勤点列表'
+            },
+            component: resolve => require(['@/components/sign/SetCheckPoint.vue'], resolve)
+          },
+          {
+            path: '/setingPoint',
+            name: 'setingPoint',
+            meta: {
+              title: '考勤点设置'
+            },
+            component: resolve => require(['@/components/sign/SetingPoint.vue'], resolve)
+          },
+          {
+            path: '/pointEdit',
+            name: 'pointEdit',
+            meta: {
+              title: '新增考勤点'
+            },
+            component: resolve => require(['@/components/sign/PointEdit.vue'], resolve)
+          },
+          {
+            path: '/setClassList',
+            name: 'setClassList',
+            meta: {
+              title: '考勤班次'
+            },
+            component: resolve => require(['@/components/sign/SetClassList.vue'], resolve)
+          },
+          {
+            path: '/classEdit',
+            name: 'classEdit',
+            meta: {
+              title: '班次编辑'
+            },
+            component: resolve => require(['@/components/sign/ClassEdit.vue'], resolve)
+          },
+          {
+            path: '/news/show',
+            name: 'news/show',
+            meta: {
+                title: '新闻详情'
+            },
+            component: resolve => require(['@/components/home/ShowNews.vue'], resolve)
+        }
+        ,{
+            path: '/sys/manager',
+            name: 'sys/manager',
+            meta: {
+                title: '企业设置',
+            },
+            component: resolve => require(['@/components/sys/index.vue'], resolve)
+        }
+        ,{
+            path: '/projectList',
+            name: 'projectList',
+            meta: {
+                title: '项目管理'
+            },
+            component:  resolve =>require(['@/components/project/ProjectList.vue'], resolve)
+        }
+         ,{
+             path: '/addProject',
+             name: 'addProject',
+             meta: {
+                 title: '添加项目'
+             },
+             component:  resolve =>require(['@/components/project/AddProject.vue'], resolve)
+         },{
+            path: '/applyBorrowing',
+            name: 'applyBorrowing',
+            meta: {
+                title: '借支申请'
+            },
+            component:  resolve =>require(['@/components/apply/ApplyBorrowing.vue'], resolve)
+        },{
+            path: '/business',
+            name: 'business',
+            meta: {
+                title: '出差申请'
+            },
+            component: resolve =>require(['@/components/apply/ApplyBusiness.vue'], resolve)
+        },{
+            path: '/safetyIndex',
+            name: 'safetyIndex',
+            meta: {
+              title: '安全检查'
+            },
+            component: resolve => require(['@/components/safety/SafetyIndex.vue'], resolve)
+        },
+        {
+            path: '/addSafetyCheck',
+            name: 'addSafetyCheck',
+            meta: {
+              title: '新增安全检查'
+            },
+            component: resolve => require(['@/components/safety/AddSafetyCheck.vue'], resolve)
+        },
+        {
+            path: '/safetyCheckBillList',
+            name: 'safetyCheckBillList',
+            meta: {
+              title: '安全检查列表'
+            },
+            component: resolve => require(['@/components/safety/SafetyCheckBillList.vue'], resolve)
+        },
+        {
+            path: '/safetyCheckBillShow',
+            name: 'safetyCheckBillShow',
+            meta: {
+              title: '安全检查详情'
+            },
+            component: resolve => require(['@/components/safety/SafetyCheckBillShow.vue'], resolve)
+        },{
+            path: '/safetyImproveBillList',
+            name: 'safetyImproveBillList',
+            meta: {
+              title: '安全整改'
+            },
+            component: resolve => require(['@/components/safety/SafetyImproveBillList.vue'], resolve)
+        },
+        {
+            path: '/addSafetyImproveBill',
+            name: 'addSafetyImproveBill',
+            meta: {
+              title: '安全整改单'
+            },
+            component: resolve => require(['@/components/safety//AddSafetyImproveBill.vue'], resolve)
+        },
+        {
+            path: '/safetyImproveBillShow',
+            name: 'safetyImproveBillShow',
+            meta: {
+              title: '安全整改单'
+            },
+            component: resolve => require(['@/components/safety/SafetyImproveBillShow.vue'], resolve)
+        },{
+            path: '/newslist',
+            name: 'newslist',
+            meta: {
+                title: '新闻列表'
+            },
+            component: resolve => require(['@/components/home/NewsList.vue'], resolve)
+        },
+        {
+            path: '/leave/list',
+            name: 'leave/list',
+            meta: {
+                title: '请假列表',
+            },
+            component: resolve => require(['@/components/leave/workOutBill.vue'], resolve)
+        },
+        {
+            path: '/leave/add',
+            name: 'leave/add',
+            meta: {
+                title: '新建请假',
+            },
+            component: resolve => require(['@/components/leave/AddLeaveNew.vue'], resolve)
+        },
+        {
+            path: '/leave/outWork',
+            name: 'leave/outWork',
+            meta: {
+                title: '出差列表',
+            },
+            component: resolve => require(['@/components/leave/workLeaveList.vue'], resolve)
+        },
+        {
+            path: '/leave/addOutWork',
+            name: 'leave/addOutWork',
+            meta: {
+                title: '新建出差',
+            },
+            component: resolve => require(['@/components/leave/AddOutWork.vue'], resolve)
+        },
+        {
+            path: '/leave/goOutList',
+            name: 'leave/goOutList',
+            meta: {
+                title: '外出列表',
+            },
+            component: resolve => require(['@/components/leave/GoOutList.vue'], resolve)
+        },
+        {
+            path: '/leave/addGoOut',
+            name: 'leave/addGoOut',
+            meta: {
+                title: '新建外出',
+            },
+            component: resolve => require(['@/components/leave/AddGoOut.vue'], resolve)
+        },
+        {
+            path: '/lanao/addGoOut',
+            name: 'lanao/addGoOut',
+            meta: {
+                title: '新建外出',
+            },
+            component: resolve => require(['@/components/leave/AddGoOut.vue'], resolve)
+        },
+        {
+            path: '/financeExpenseList',
+            name: '/financeExpenseList',
+            meta: {
+                title: '费用申报报销'
+            },
+            component: resolve => require(['@/components/finance/financeExpenseList.vue'], resolve)
+        }, 
+        {
+            path: '/financeStandbyList',
+            name: '/financeStandbyList',
+            meta: {
+                title: '费用申报'
+            },
+            component: resolve => require(['@/components/finance/financeStandbyList.vue'], resolve)
+        }, 
+        {
+            path: '/financeRealyList',
+            name: '/financeRealyList',
+            meta: {
+                title: '项目实报实销'
+            },
+            component: resolve => require(['@/components/finance/financeRealyList.vue'], resolve)
+        }, 
+        {
+            path: '/renduBillList',
+            name: '/renduBillList',
+            meta: {
+                title: '项目实报实销'
+            },
+            component: resolve => require(['@/components/finance/renduBillList.vue'], resolve)
+        }, 
+        {
+            path: '/finance/renduBillItem',
+            name: 'finance/renduBillItem',
+            meta: {
+                title: '项目实报实销'
+            },
+            component: resolve => require(['@/components/finance/renduBillItem.vue'], resolve)
+        }, 
+        {
+            path: '/finance/financeRealyItem',
+            name: 'finance/financeRealyItem',
+            meta: {
+                title: '项目实报实销'
+            },
+            // component: require('@/components/apply/ApplyPurchase.vue')
+            component: resolve => require(['@/components/finance/financeRealyItem.vue'], resolve)
+        }, 
+        {
+            path: '/finance/financeStandbyItem',
+            name: 'finance/financeStandbyItem',
+            meta: {
+                title: '费用申报'
+            },
+            // component: require('@/components/apply/ApplyPurchase.vue')
+            component: resolve => require(['@/components/finance/financeStandbyItem.vue'], resolve)
+        }, 
+        {
+            path: '/finance/financeExpenseItem',
+            name: 'finance/financeExpenseItem',
+            meta: {
+                title: '费用申报报销'
+            },
+            // component: require('@/components/apply/ApplyPurchase.vue')
+            component: resolve => require(['@/components/finance/financeExpenseItem.vue'], resolve)
+        }, 
+
+
+
+    ],
+})
+router.beforeEach((to, from, next) => {
+
+    document.title = to.meta.title;
+    next();
+})
+
+export default router;
